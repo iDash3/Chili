@@ -1,9 +1,11 @@
 import React from "react";
+import "../App.css";
 
 const Header = () => {
   return (
-    <header>
-      Something should go here.
+    <header className="header">
+      <div>1</div>
+      <div>Chili</div>
       <div>Carrito</div>
     </header>
   );
