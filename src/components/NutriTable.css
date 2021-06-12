@@ -1,0 +1,131 @@
+:root {
+  --table-color: #f1f8e9;
+  --plus-button: #d3fca7;
+  --minus-button: #d3fca7;
+}
+
+.nutritable__table {
+  margin: 10vh 10vw;
+}
+.nutritable__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2px 1fr;
+  background-color: var(--table-color);
+  user-select: none;
+}
+.nutritable__grid__title {
+  background-color: white;
+  font-size: 20px;
+}
+.nutritable__grid span {
+  padding: 8px 0;
+  font-size: 20px;
+  text-align: center;
+}
+.nutritable__font {
+  max-width: 300px;
+  color: #fffde7;
+}
+.nutritable__element__fruit {
+  background-color: #e57373;
+}
+.nutritable__element__vegetable {
+  background-color: #81c784;
+}
+.nutritable__element__cereal {
+  background-color: #cddc39;
+}
+.nutritable__element__leguminosas {
+  background-color: #4db6ac;
+}
+.nutritable__element__leche {
+  background-color: #64b5f6;
+}
+.nutritable__element__grasas {
+  background-color: #f06292;
+}
+.nutritable__element__meat {
+  background-color: #ba68c8;
+}
+.nutritable__element__sugar {
+  background-color: #00ffff;
+}
+
+.nutrielement__total {
+  background-color: white;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Little container for buttons */
+.nutrielement__container {
+  position: relative;
+}
+.nutrielement__container span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nutrielement__buttons {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.nutrielement__right,
+.nutrielement__left {
+  width: 50%;
+  font-size: 3vh;
+  background-color: transparent;
+  color: transparent;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nutrielement__right:hover {
+  color: black;
+  /* background-color: var(--plus-button); */
+  background-image: linear-gradient(to left, var(--plus-button), transparent);
+}
+.nutrielement__left:hover {
+  color: black;
+  /* background-color: var(--minus-button); */
+  background-image: linear-gradient(to right, var(--plus-button), transparent);
+}
+
+.nutritable__line {
+  background-color: black;
+}
+
+/*  */
+/* Media queries */
+/*  */
+
+/* Large */
+@media screen and (max-width: 992px) {
+  .nutritable__font {
+    max-width: 300px;
+  }
+}
+
+/* Small */
+@media screen and (max-width: 600px) {
+  .nutritable__table {
+    overflow-x: scroll;
+  }
+  .nutritable__grid {
+    display: grid;
+    grid-template-columns: 90px 90px 90px 90px 90px 2px 90px;
+  }
+  .nutritable__font {
+    width: 90px;
+    font-size: 9px;
+  }
+  .nutritable__grid__title span {
+    font-size: 11px;
+  }
+}

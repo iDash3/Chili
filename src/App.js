@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import Header from "./components/Header";
+import NutriTable from "./components/NutriTable";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <NutriTable></NutriTable>
+      <h2>Menus</h2>
+      <h2>Desayuno</h2>
+      <h2>Comida</h2>
+      <h2>Cena</h2>
+      <h2>Entre comidas</h2>
     </div>
   );
 }
