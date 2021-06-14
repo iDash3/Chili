@@ -10,7 +10,6 @@
 .nutritable__grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2px 1fr;
-  background-color: var(--table-color);
   user-select: none;
 }
 .nutritable__grid__title {
@@ -26,10 +25,10 @@
   max-width: 300px;
   color: #fffde7;
 }
-.nutritable__element__fruit {
+.nutritable__element__fruits {
   background-color: #e57373;
 }
-.nutritable__element__vegetable {
+.nutritable__element__vegetables {
   background-color: #81c784;
 }
 .nutritable__element__cereal {
@@ -60,6 +59,7 @@
 /* Little container for buttons */
 .nutrielement__container {
   position: relative;
+  background-color: var(--table-color);
 }
 .nutrielement__container span {
   display: flex;
@@ -127,5 +127,16 @@
   }
   .nutritable__grid__title span {
     font-size: 11px;
+  }
+  .nutrielement__right,
+  .nutrielement__left {
+    transition: 0s;
+    transition-delay: 0.1s;
+  }
+  .nutrielement__right:hover {
+    transition: 0s;
+  }
+  .nutrielement__left:hover {
+    transition: 0s;
   }
 }

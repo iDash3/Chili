@@ -1,53 +1,50 @@
 import React, { useState } from "react";
 import "./NutriTable.css";
 
-const imagiData = {
-  1: {
-    fruits: 3,
-    vegetables: 3,
-    cereal: 3,
-    leguminosas: 2,
-    leche: 1,
-    sugar: 0,
-    meat: 12,
-    grasas: 2,
-  },
-};
+const NutriTable = ({ prevData }) => {
+  // Each element of the table
+  const NutriElement = ({ name, id, preData }) => {
+    let preTotal;
+    if (preData == null) {
+      preData = [0, 0, 0, 0];
+      preTotal = 0;
+    } else {
+      preTotal = preData.reduce((a, b) => {
+        return a + b;
+      });
+    }
+    const [food, setFood] = useState(preData);
+    const [total, setTotal] = useState(preTotal);
 
-const NutriTable = () => {
-  const NutriElement = ({ name, id }) => {
-    const [desayuno, setDesayuno] = useState(0);
-    const [comida, setComida] = useState(0);
-    const [cena, setCena] = useState(0);
-    const [entreComida, setEntreComida] = useState(0);
-    const [total, setTotal] = useState(0);
-
-    const HandleClick = (bar, setBar, much) => {
-      if (bar >= 0 && total >= 0) {
-        if (much < 0) {
-          if (bar == 0 || total == 0) {
-            return 0;
-          }
+    // Handle click (add +1, substract -1)
+    const HandleClicky = (i, much) => {
+      let f = food[i];
+      let newFood = [...food];
+      if (food[i] >= 0) {
+        if (food[i] == 0 && much < 0) {
+          return 0;
         }
+        newFood[i] = newFood[i] + much;
         setTotal(total + much);
-        setBar(bar + much);
       }
+      setFood(newFood);
     };
 
-    const NutriRow = ({ bar, setBar }) => {
+    // Single row of the table, the ones with numbers
+    const NutriRow = ({ index }) => {
       return (
         <div className="nutrielement__container">
-          <span>{bar > 0 ? bar : "-"}</span>
+          <span>{food[index] > 0 ? food[index] : "-"}</span>
           <div className="nutrielement__buttons">
             <div
               className="nutrielement__left"
-              onClick={() => HandleClick(bar, setBar, -1)}
+              onClick={() => HandleClicky(index, -1)}
             >
               -
             </div>
             <div
               className="nutrielement__right"
-              onClick={() => HandleClick(bar, setBar, 1)}
+              onClick={() => HandleClicky(index, 1)}
             >
               +
             </div>
@@ -62,19 +59,22 @@ const NutriTable = () => {
         <span id={id} className={`nutritable__font nutritable__element__${id}`}>
           {name}
         </span>
-        <NutriRow bar={desayuno} setBar={setDesayuno}></NutriRow>
-        <NutriRow bar={comida} setBar={setComida}></NutriRow>
-        <NutriRow bar={cena} setBar={setCena}></NutriRow>
-        <NutriRow bar={entreComida} setBar={setEntreComida}></NutriRow>
+        <NutriRow index={0}></NutriRow>
+        <NutriRow index={1}></NutriRow>
+        <NutriRow index={2}></NutriRow>
+        <NutriRow index={3}></NutriRow>
         <span className="nutritable__line"></span>
         <span className="nutrielement__total">{total}</span>
       </div>
     );
   };
 
+  // Return actual complete table
   return (
     <div className="nutritable__table">
-      <small>Click right to add +1, left to substract -1!</small>
+      <small>
+        Click right to add <b>+1</b>, left to substract <b>-1</b>!
+      </small>
       <div className="nutritable__grid nutritable__grid__title">
         <span></span>
         <span>Desayuno</span>
@@ -84,14 +84,27 @@ const NutriTable = () => {
         <span className="nutritable__line"></span>
         <span>Porciones Totales</span>
       </div>
-      <NutriElement name="Fruits" id="fruit"></NutriElement>
-      <NutriElement name="Vegetables" id="vegetable"></NutriElement>
-      <NutriElement name="Cereales" id="cereal"></NutriElement>
-      <NutriElement name="Leguminosas" id="leguminosas"></NutriElement>
-      <NutriElement name="Leche" id="leche"></NutriElement>
-      <NutriElement name="Azucares" id="sugar"></NutriElement>
-      <NutriElement name="Carne" id="meat"></NutriElement>
-      <NutriElement name="Grasas" id="grasas"></NutriElement>
+      {prevData ? (
+        prevData.data.map((el) => (
+          <NutriElement
+            key={el[Object.keys(el)[0]].id}
+            name={el[Object.keys(el)[0]].name}
+            id={el[Object.keys(el)[0]].id}
+            preData={el[Object.keys(el)[0]].data}
+          ></NutriElement>
+        ))
+      ) : (
+        <div>
+          <NutriElement name="Fruits" id="fruits"></NutriElement>
+          <NutriElement name="Vegetables" id="vegetables"></NutriElement>
+          <NutriElement name="Cereales" id="cereal"></NutriElement>
+          <NutriElement name="Leguminosas" id="leguminosas"></NutriElement>
+          <NutriElement name="Leche" id="leche"></NutriElement>
+          <NutriElement name="Azucares" id="sugar"></NutriElement>
+          <NutriElement name="Carne" id="meat"></NutriElement>
+          <NutriElement name="Grasas" id="grasas"></NutriElement>
+        </div>
+      )}
     </div>
   );
 };
