@@ -1,0 +1,46 @@
+/* Main container */
+.menucontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Menus wrapper */
+.menucontainer__wrapper {
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/* Menus buttons */
+.menucontainer__buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.menucontainer__make {
+  border: 1px dotted blue;
+}
+.menucontainer__import {
+  border: 1px dotted green;
+}
+
+/*  */
+/* Media queries */
+/*  */
+
+/* Med */
+@media screen and (max-width: 992px) {
+}
+
+/* Small */
+@media screen and (max-width: 600px) {
+  /* Menus wrapper */
+  .menucontainer__wrapper {
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

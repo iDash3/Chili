@@ -20,8 +20,8 @@ const NutriTable = ({ prevData }) => {
     const HandleClicky = (i, much) => {
       let f = food[i];
       let newFood = [...food];
-      if (food[i] >= 0) {
-        if (food[i] == 0 && much < 0) {
+      if (f >= 0) {
+        if (f === 0 && much < 0) {
           return 0;
         }
         newFood[i] = newFood[i] + much;

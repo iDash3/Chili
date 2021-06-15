@@ -1,0 +1,70 @@
+/* Global */
+:root {
+  --menu-color: #f1f8e9;
+}
+
+/* Main main container */
+.menu {
+  background-color: var(--menu-color);
+  border-radius: 8px;
+  margin: 10px;
+  padding: 9px;
+
+  height: fit-content;
+}
+
+/* First section */
+.menu__title {
+  font-size: 25px;
+  margin-bottom: 6px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu__ingredient {
+  font-size: 18px;
+  padding: 3px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.menu__type {
+  color: #fffde7;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+.menu__type span {
+  font-weight: 700;
+}
+
+/* Menu line */
+.menu__line {
+  height: 1px;
+  margin: 0 -9px;
+  background-color: red;
+  margin-top: 6px;
+}
+
+/* Second section */
+.menu__second {
+  margin-top: 6px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Add button */
+.menu__add {
+  background-color: #aed581;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 8px;
+}
+.menu__add:hover {
+  background-color: #a1c779;
+}
